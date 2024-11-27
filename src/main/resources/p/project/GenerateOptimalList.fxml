@@ -4,44 +4,157 @@
 <?import javafx.scene.layout.*?>
 
 <AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="p.project.Controllers.GenerateOptimalListController"
-            prefWidth="650" prefHeight="450" style="-fx-background-color: #f5f5f5;">
+            prefWidth="650" prefHeight="450"
+            style="
+                -fx-background-color: #ffffff; /* Clean white background */
+                -fx-padding: 20px;
+                -fx-border-radius: 10px;
+                -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.15), 10, 0, 0, 5);
+            ">
+
     <!-- Title -->
     <Label text="Generate Optimal List" layoutX="200" layoutY="20"
-           style="-fx-font-size: 18px; -fx-text-fill: #333333;"/>
+           style="
+                -fx-font-size: 22px;
+                -fx-font-family: 'Segoe UI', sans-serif;
+                -fx-font-weight: bold;
+                -fx-text-fill: #333333; /* Dark text color for readability */
+           "/>
 
     <!-- Budget Input -->
-    <Label text="Budget:" layoutX="30" layoutY="80" style="-fx-text-fill: #333333; -fx-font-size: 14px;"/>
+    <Label text="Budget:" layoutX="30" layoutY="80"
+           style="
+                -fx-text-fill: #50514F;
+                -fx-font-family: 'Segoe UI', sans-serif;
+                -fx-font-size: 16px;
+           "/>
     <TextField fx:id="budgetField" layoutX="150" layoutY="75" prefWidth="300"
-               style="-fx-background-radius: 0; -fx-background-color: #D3D3D3; -fx-border-color: #333333;"/>
+               style="
+                    -fx-background-radius: 25px;
+                    -fx-background-color: #f0f0f0;
+                    -fx-border-color: #cccccc;
+                    -fx-border-radius: 25px;
+                    -fx-padding: 5px 10px;
+                    -fx-font-family: 'Segoe UI', sans-serif;
+                    -fx-font-size: 14px;
+               "/>
 
     <!-- Family Size Input -->
-    <Label text="Family Size:" layoutX="30" layoutY="130" style="-fx-text-fill: #333333; -fx-font-size: 14px;"/>
+    <Label text="Family Size:" layoutX="30" layoutY="130"
+           style="
+                -fx-text-fill: #50514F;
+                -fx-font-family: 'Segoe UI', sans-serif;
+                -fx-font-size: 16px;
+           "/>
     <TextField fx:id="familySizeField" layoutX="150" layoutY="125" prefWidth="300"
-               style="-fx-background-radius: 0; -fx-background-color: #D3D3D3; -fx-border-color: #333333;"/>
+               style="
+                    -fx-background-radius: 25px;
+                    -fx-background-color: #f0f0f0;
+                    -fx-border-color: #cccccc;
+                    -fx-border-radius: 25px;
+                    -fx-padding: 5px 10px;
+                    -fx-font-family: 'Segoe UI', sans-serif;
+                    -fx-font-size: 14px;
+               "/>
 
     <!-- Location Input -->
-    <Label text="Location:" layoutX="30" layoutY="180" style="-fx-text-fill: #333333; -fx-font-size: 14px;"/>
+    <Label text="Location:" layoutX="30" layoutY="180"
+           style="
+                -fx-text-fill: #50514F;
+                -fx-font-family: 'Segoe UI', sans-serif;
+                -fx-font-size: 16px;
+           "/>
     <TextField fx:id="locationField" layoutX="150" layoutY="175" prefWidth="300"
-               style="-fx-background-radius: 0; -fx-background-color: #D3D3D3; -fx-border-color: #333333;"/>
+               style="
+                    -fx-background-radius: 25px;
+                    -fx-background-color: #f0f0f0;
+                    -fx-border-color: #cccccc;
+                    -fx-border-radius: 25px;
+                    -fx-padding: 5px 10px;
+                    -fx-font-family: 'Segoe UI', sans-serif;
+                    -fx-font-size: 14px;
+               "/>
 
     <!-- Percentages Inputs -->
-    <Label text="Food Essentials (%):" layoutX="30" layoutY="230" style="-fx-text-fill: #333333; -fx-font-size: 14px;"/>
-    <TextField fx:id="foodEssentialsField" layoutX="150" layoutY="225" prefWidth="50"
-               style="-fx-background-radius: 0; -fx-background-color: #D3D3D3; -fx-border-color: #333333;"/>
+    <Label text="Food Essentials (%):" layoutX="30" layoutY="230"
+           style="
+                -fx-text-fill: #50514F;
+                -fx-font-family: 'Segoe UI', sans-serif;
+                -fx-font-size: 16px;
+           "/>
+    <TextField fx:id="foodEssentialsField" layoutX="200" layoutY="225" prefWidth="80"
+               style="
+                    -fx-background-radius: 25px;
+                    -fx-background-color: #f0f0f0;
+                    -fx-border-color: #cccccc;
+                    -fx-border-radius: 25px;
+                    -fx-padding: 5px 10px;
+                    -fx-font-family: 'Segoe UI', sans-serif;
+                    -fx-font-size: 14px;
+               "/>
 
-    <Label text="Utilities (%):" layoutX="30" layoutY="280" style="-fx-text-fill: #333333; -fx-font-size: 14px;"/>
-    <TextField fx:id="utilitiesField" layoutX="150" layoutY="275" prefWidth="50"
-               style="-fx-background-radius: 0; -fx-background-color: #D3D3D3; -fx-border-color: #333333;"/>
+    <Label text="Utilities (%):" layoutX="30" layoutY="280"
+           style="
+                -fx-text-fill: #50514F;
+                -fx-font-family: 'Segoe UI', sans-serif;
+                -fx-font-size: 16px;
+           "/>
+    <TextField fx:id="utilitiesField" layoutX="200" layoutY="275" prefWidth="80"
+               style="
+                    -fx-background-radius: 25px;
+                    -fx-background-color: #f0f0f0;
+                    -fx-border-color: #cccccc;
+                    -fx-border-radius: 25px;
+                    -fx-padding: 5px 10px;
+                    -fx-font-family: 'Segoe UI', sans-serif;
+                    -fx-font-size: 14px;
+               "/>
 
-    <Label text="Cosmetics (%):" layoutX="30" layoutY="330" style="-fx-text-fill: #333333; -fx-font-size: 14px;"/>
-    <TextField fx:id="cosmeticsField" layoutX="150" layoutY="325" prefWidth="50"
-               style="-fx-background-radius: 0; -fx-background-color: #D3D3D3; -fx-border-color: #333333;"/>
+    <Label text="Cosmetics (%):" layoutX="30" layoutY="330"
+           style="
+                -fx-text-fill: #50514F;
+                -fx-font-family: 'Segoe UI', sans-serif;
+                -fx-font-size: 16px;
+           "/>
+    <TextField fx:id="cosmeticsField" layoutX="200" layoutY="325" prefWidth="80"
+               style="
+                    -fx-background-radius: 25px;
+                    -fx-background-color: #f0f0f0;
+                    -fx-border-color: #cccccc;
+                    -fx-border-radius: 25px;
+                    -fx-padding: 5px 10px;
+                    -fx-font-family: 'Segoe UI', sans-serif;
+                    -fx-font-size: 14px;
+               "/>
 
     <!-- Buttons -->
-    <Button text="Submit" layoutX="30" layoutY="380" prefWidth="100"
-            style="-fx-background-color: #efcb68; -fx-background-radius: 0; -fx-border-color: #333333;"
+    <Button text="Submit" layoutX="30" layoutY="380" prefWidth="150" prefHeight="40"
+            style="
+                -fx-background-color: #4CAF50; /* Green for positive action */
+                -fx-background-radius: 25px;
+                -fx-text-fill: white;
+                -fx-font-family: 'Segoe UI', sans-serif;
+                -fx-font-size: 16px;
+                -fx-font-weight: bold;
+                -fx-cursor: hand;
+                -fx-border-color: #388E3C;
+                -fx-border-radius: 25px;
+                -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 5, 0, 0, 3);
+            "
             onAction="#handleSubmit"/>
-    <Button text="Home" layoutX="150" layoutY="380" prefWidth="100"
-            style="-fx-background-color: #efcb68; -fx-background-radius: 0; -fx-border-color: #333333;"
+
+    <Button text="Main Menu" layoutX="30" layoutY="430" prefWidth="150" prefHeight="40"
+            style="
+                -fx-background-color: #F44336; /* Blue for navigation */
+                -fx-background-radius: 25px;
+                -fx-text-fill: white;
+                -fx-font-family: 'Segoe UI', sans-serif;
+                -fx-font-size: 16px;
+                -fx-font-weight: bold;
+                -fx-cursor: hand;
+                -fx-border-color: #1976D2;
+                -fx-border-radius: 25px;
+                -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 5, 0, 0, 3);
+            "
             onAction="#handleHome"/>
 </AnchorPane>

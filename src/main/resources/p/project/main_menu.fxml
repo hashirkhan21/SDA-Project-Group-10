@@ -1,76 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.VBox?>
-<VBox spacing="20" alignment="CENTER" xmlns:fx="http://javafx.com/fxml/1" fx:controller="p.project.Controllers.MainMenuController" style="
-    -fx-background-color: #f8f9fa; /* Light white background for contrast */
-    -fx-border-color: #dddddd;
-    -fx-border-radius: 8px;
-    -fx-background-radius: 8px;
-    -fx-padding: 10px;
-    -fx-font-family: 'Arial', sans-serif;
-    -fx-font-size: 14px;
-    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 10, 0, 0, 2);
-    -fx-text-fill: #000000; /* Black text for visibility */
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.paint.Color?>
+
+<VBox spacing="15" alignment="CENTER" xmlns:fx="http://javafx.com/fxml/1" fx:controller="p.project.Controllers.MainMenuController" style="
+    -fx-background-color: #ffffff; /* Clean white background for a minimalist look */
+    -fx-border-radius: 10px;
+    -fx-padding: 20px;
+    -fx-font-family: 'Segoe UI', sans-serif;
+    -fx-font-size: 16px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.15), 8, 0, 0, 4);
+    -fx-text-fill: #333333; /* Dark text for better readability */
+    -fx-alignment: CENTER;
 ">
+    <!-- Place Order Button -->
     <Button text="Place Order" onAction="#goToPlaceOrder" style="
-    -fx-background-color: #4caf50; /* Green for buttons */
-    -fx-background-radius: 20px;
-    -fx-text-fill: white;
-    -fx-padding: 10px 20px;
-    -fx-font-size: 14px;
-    -fx-font-family: 'Arial', sans-serif;
-    -fx-cursor: hand;
-    -fx-border-color: #3e8e41; /* Darker green border */
-    -fx-border-radius: 20px;
-    "/>
-
-    <Button fx:id="manageAccountButton" text="Manage Account" onAction="#goToManageAccount" style="
-    -fx-background-color: #ff9800; /* Orange for a distinct look */
-    -fx-background-radius: 20px;
-    -fx-text-fill: white;
-    -fx-padding: 10px 20px;
-    -fx-font-size: 14px;
-    -fx-font-family: 'Arial', sans-serif;
-    -fx-cursor: hand;
-    -fx-border-color: #e65100; /* Darker orange border */
-    -fx-border-radius: 20px;
-    "/>
-
-    <Button text="Generate Optimal List" onAction="#goToGenerateOptimalList" style="
-        -fx-background-color: #2196F3; /* Blue for action */
-        -fx-background-radius: 20px;
+        -fx-background-color: #4CAF50; /* Green for positive action */
+        -fx-background-radius: 25px;
         -fx-text-fill: white;
-        -fx-padding: 10px 20px;
-        -fx-font-size: 14px;
-        -fx-font-family: 'Arial', sans-serif;
+        -fx-pref-width: 200px; /* Fixed width */
+        -fx-pref-height: 50px; /* Fixed height */
+        -fx-padding: 12px 0;
+        -fx-font-size: 16px;
+        -fx-font-weight: bold;
+        -fx-cursor: hand;
+        -fx-border-color: #388E3C; /* Darker green border */
+        -fx-border-radius: 25px;
+        -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 5, 0, 0, 3);
+    "/>
+
+    <!-- Manage Account Button -->
+    <Button fx:id="manageAccountButton" text="Manage Account" onAction="#goToManageAccount" style="
+        -fx-background-color: #FF9800; /* Orange for secondary actions */
+        -fx-background-radius: 25px;
+        -fx-text-fill: white;
+        -fx-pref-width: 200px; /* Fixed width */
+        -fx-pref-height: 50px; /* Fixed height */
+        -fx-padding: 12px 0;
+        -fx-font-size: 16px;
+        -fx-font-weight: bold;
+        -fx-cursor: hand;
+        -fx-border-color: #F57C00; /* Darker orange border */
+        -fx-border-radius: 25px;
+        -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 5, 0, 0, 3);
+    "/>
+
+    <!-- Generate Optimal List Button -->
+    <Button text="Generate Optimal List" onAction="#goToGenerateOptimalList" style="
+        -fx-background-color: #2196F3; /* Blue for neutral action */
+        -fx-background-radius: 25px;
+        -fx-text-fill: white;
+        -fx-pref-width: 200px; /* Fixed width */
+        -fx-pref-height: 50px; /* Fixed height */
+        -fx-padding: 12px 0;
+        -fx-font-size: 16px;
+        -fx-font-weight: bold;
         -fx-cursor: hand;
         -fx-border-color: #1976D2; /* Darker blue border */
-        -fx-border-radius: 20px;
+        -fx-border-radius: 25px;
+        -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 5, 0, 0, 3);
     "/>
 
+    <!-- Analysis Button -->
     <Button fx:id="analysisButton" text="Analysis" onAction="#onAnalysisButtonClick" style="
-    -fx-background-color: #FF00FF; /* Red for sign out */
-    -fx-background-radius: 20px;
-    -fx-text-fill: white;
-    -fx-padding: 10px 20px;
-    -fx-font-size: 14px;
-    -fx-font-family: 'Arial', sans-serif;
-    -fx-cursor: hand;
-    -fx-border-color: #d32f2f; /* Darker red border */
-    -fx-border-radius: 20px;
+        -fx-background-color: #FF4081; /* Pink for analytical actions */
+        -fx-background-radius: 25px;
+        -fx-text-fill: white;
+        -fx-pref-width: 200px; /* Fixed width */
+        -fx-pref-height: 50px; /* Fixed height */
+        -fx-padding: 12px 0;
+        -fx-font-size: 16px;
+        -fx-font-weight: bold;
+        -fx-cursor: hand;
+        -fx-border-color: #F50057; /* Darker pink border */
+        -fx-border-radius: 25px;
+        -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 5, 0, 0, 3);
     "/>
 
+    <!-- Sign Out Button -->
     <Button text="Sign Out" onAction="#signOut" style="
-    -fx-background-color: #f44336; /* Red for sign out */
-    -fx-background-radius: 20px;
-    -fx-text-fill: white;
-    -fx-padding: 10px 20px;
-    -fx-font-size: 14px;
-    -fx-font-family: 'Arial', sans-serif;
-    -fx-cursor: hand;
-    -fx-border-color: #d32f2f; /* Darker red border */
-    -fx-border-radius: 20px;
+        -fx-background-color: #F44336; /* Red for sign out */
+        -fx-background-radius: 25px;
+        -fx-text-fill: white;
+        -fx-pref-width: 200px; /* Fixed width */
+        -fx-pref-height: 50px; /* Fixed height */
+        -fx-padding: 12px 0;
+        -fx-font-size: 16px;
+        -fx-font-weight: bold;
+        -fx-cursor: hand;
+        -fx-border-color: #D32F2F; /* Darker red border */
+        -fx-border-radius: 25px;
+        -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 5, 0, 0, 3);
     "/>
-
-
 </VBox>

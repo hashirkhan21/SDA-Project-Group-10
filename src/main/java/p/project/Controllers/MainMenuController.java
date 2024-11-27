@@ -25,7 +25,7 @@ public class MainMenuController {
             // Correct path
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/p/project/order_menu.fxml"));
             Parent root = loader.load();
-            Scene scene = new Scene(root);
+            Scene scene = new Scene(root,500,500);
             scene.getStylesheets().add(getClass().getResource("/p/project/style.css").toExternalForm());
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
@@ -70,7 +70,7 @@ public class MainMenuController {
             Parent root = loader.load();
 
             // Load the new scene
-            Scene scene = new Scene(root,800,800);
+            Scene scene = new Scene(root,600,600);
             scene.getStylesheets().add(getClass().getResource("/p/project/style.css").toExternalForm());
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);

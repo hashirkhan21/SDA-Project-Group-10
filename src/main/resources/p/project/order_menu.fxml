@@ -2,41 +2,89 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<HBox alignment="CENTER" prefHeight="500.0" prefWidth="600.0" spacing="30" style="-fx-background-color: #FFFCFF;" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="p.project.Controllers.OrderMenuController">
+<VBox alignment="CENTER" spacing="20" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="p.project.Controllers.OrderMenuController" style="
+    -fx-background-color: #ffffff; /* Clean white background for a minimalist look */
+    -fx-border-radius: 10px;
+    -fx-padding: 40px;
+    -fx-font-family: 'Segoe UI', sans-serif;
+    -fx-font-size: 16px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.15), 8, 0, 0, 4);
+    -fx-text-fill: #333333; /* Dark text for better readability */
+    -fx-alignment: CENTER;
+">
 
-    <!-- Left side (Form) -->
-    <VBox alignment="CENTER" prefHeight="500.0" prefWidth="500.0" spacing="20" style="-fx-background-color: #FFFFFF; -fx-padding: 40; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 10, 0.0, 0, 10);">
-
-        <Label style="-fx-text-fill: #50514F; -fx-font-family: 'Segoe UI', Arial, sans-serif; -fx-font-size: 26px; -fx-font-weight: bold;" text="Select List" />
-
-        <Button onAction="#selectCustomList" style="-fx-background-color: #51CF66; -fx-text-fill: #FFFFFF; -fx-font-size: 16px; -fx-padding: 12 25; -fx-border-radius: 25; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0.0, 0, 5);" text="Custom List" />
-
-        <Button onAction="#selectOptimalList" style="-fx-background-color: #247BA0; -fx-text-fill: #FFFFFF; -fx-font-size: 16px; -fx-padding: 12 25; -fx-border-radius: 25; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0.0, 0, 5);" text="Optimal List" />
-
-        <Button text="Order Codes" onAction="#showOrderCodes" style="
-        -fx-background-color: #4caf50;
-        -fx-text-fill: white;
-        -fx-background-radius: 10px;
-        -fx-padding: 10px 20px;
-        -fx-font-size: 14px;
-        -fx-cursor: hand;
+    <!-- Header Label -->
+    <Label text="Select List" style="
+        -fx-text-fill: #50514F;
+        -fx-font-family: 'Segoe UI', Arial, sans-serif;
+        -fx-font-size: 26px;
+        -fx-font-weight: bold;
     " />
-        <Button text="Back to Main Menu" onAction="#goBackToMainMenu" style="
-    -fx-background-color: #f44336;
-    -fx-text-fill: white;
-    -fx-background-radius: 10px;
-    -fx-padding: 10px 20px;
-    -fx-font-size: 14px;" />
 
+    <!-- Custom List Button -->
+    <Button text="Custom List" onAction="#selectCustomList" style="
+        -fx-background-color: #4CAF50; /* Green for positive action */
+        -fx-background-radius: 25px;
+        -fx-text-fill: white;
+        -fx-pref-width: 200px; /* Fixed width */
+        -fx-pref-height: 50px; /* Fixed height */
+        -fx-padding: 12px 0;
+        -fx-font-size: 16px;
+        -fx-font-weight: bold;
+        -fx-cursor: hand;
+        -fx-border-color: #388E3C; /* Darker green border */
+        -fx-border-radius: 25px;
+        -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 5, 0, 0, 3);
+    "/>
 
-    </VBox>
+    <!-- Optimal List Button -->
+    <Button text="Optimal List" onAction="#selectOptimalList" style="
+        -fx-background-color: #2196F3; /* Blue for neutral action */
+        -fx-background-radius: 25px;
+        -fx-text-fill: white;
+        -fx-pref-width: 200px; /* Fixed width */
+        -fx-pref-height: 50px; /* Fixed height */
+        -fx-padding: 12px 0;
+        -fx-font-size: 16px;
+        -fx-font-weight: bold;
+        -fx-cursor: hand;
+        -fx-border-color: #1976D2; /* Darker blue border */
+        -fx-border-radius: 25px;
+        -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 5, 0, 0, 3);
+    "/>
 
+    <!-- Order Codes Button -->
+    <Button text="Order Codes" onAction="#showOrderCodes" style="
+        -fx-background-color: #FF9800; /* Orange for secondary actions */
+        -fx-background-radius: 25px;
+        -fx-text-fill: white;
+        -fx-pref-width: 200px; /* Fixed width */
+        -fx-pref-height: 50px; /* Fixed height */
+        -fx-padding: 12px 0;
+        -fx-font-size: 16px;
+        -fx-font-weight: bold;
+        -fx-cursor: hand;
+        -fx-border-color: #F57C00; /* Darker orange border */
+        -fx-border-radius: 25px;
+        -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 5, 0, 0, 3);
+    "/>
 
+    <!-- Back to Main Menu Button -->
+    <Button text="Main Menu" onAction="#goBackToMainMenu" style="
+        -fx-background-color: #F44336; /* Red for sign out */
+        -fx-background-radius: 25px;
+        -fx-text-fill: white;
+        -fx-pref-width: 200px; /* Fixed width */
+        -fx-pref-height: 50px; /* Fixed height */
+        -fx-padding: 12px 0;
+        -fx-font-size: 16px;
+        -fx-font-weight: bold;
+        -fx-cursor: hand;
+        -fx-border-color: #D32F2F; /* Darker red border */
+        -fx-border-radius: 25px;
+        -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 5, 0, 0, 3);
+    "/>
 
-
-
-
-</HBox>
+</VBox>

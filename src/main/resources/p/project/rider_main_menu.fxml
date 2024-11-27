@@ -5,38 +5,49 @@
 
 <VBox spacing="20" alignment="CENTER" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="p.project.Controllers.RiderMainMenuController" style="
-      -fx-background-color: #f8f9fa; /* Light white background */
+      -fx-background-color: #ffffff; /* Clean white background */
       -fx-padding: 20;
-      -fx-font-family: 'Arial', sans-serif;
-      -fx-font-size: 14px;">
+      -fx-border-radius: 10px;
+      -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 10, 0, 0, 5);
+      -fx-font-family: 'Segoe UI', sans-serif; /* Updated font */
+      -fx-font-size: 16px;">
 
     <Button text="Make Delivery" onAction="#goToMakeDelivery" style="
-        -fx-background-color: #4caf50; /* Green button */
+        -fx-background-color: #4CAF50; /* Green for positive action */
+        -fx-background-radius: 25px;
         -fx-text-fill: white;
         -fx-font-size: 16px;
-        -fx-background-radius: 10px;
-        -fx-padding: 10px 20px;
+        -fx-font-weight: bold;
+        -fx-padding: 12px 25px;
         -fx-cursor: hand;
-        "/>
+        -fx-border-radius: 25px;
+        -fx-border-color: #388E3C;
+        -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 5, 0, 0, 3);
+    "/>
 
     <Button text="Complete Delivery" onAction="#goToCompleteDelivery" style="
-        -fx-background-color: #007bff; /* Blue button */
+        -fx-background-color: #007BFF; /* Blue for action */
+        -fx-background-radius: 25px;
         -fx-text-fill: white;
         -fx-font-size: 16px;
-        -fx-background-radius: 10px;
-        -fx-padding: 10px 20px;
+        -fx-font-weight: bold;
+        -fx-padding: 12px 25px;
         -fx-cursor: hand;
-        "/>
+        -fx-border-radius: 25px;
+        -fx-border-color: #1976D2;
+        -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 5, 0, 0, 3);
+    "/>
 
     <Button text="Sign Out" onAction="#signOut" style="
-    -fx-background-color: #f44336; /* Red for sign out */
-    -fx-background-radius: 20px;
-    -fx-text-fill: white;
-    -fx-padding: 10px 20px;
-    -fx-font-size: 14px;
-    -fx-font-family: 'Arial', sans-serif;
-    -fx-cursor: hand;
-    -fx-border-color: #d32f2f; /* Darker red border */
-    -fx-border-radius: 20px;
+        -fx-background-color: #F44336; /* Red for negative action */
+        -fx-background-radius: 25px;
+        -fx-text-fill: white;
+        -fx-font-size: 16px;
+        -fx-font-weight: bold;
+        -fx-padding: 12px 25px;
+        -fx-cursor: hand;
+        -fx-border-radius: 25px;
+        -fx-border-color: #D32F2F;
+        -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 5, 0, 0, 3);
     "/>
 </VBox>
