@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.ListView?>
 
 <AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="p.project.Controllers.AnalysisController">
     <children>
@@ -21,11 +22,11 @@
         <Label text="Select Date (Optional)" layoutX="20" layoutY="140" />
         <DatePicker fx:id="dateFilterDatePicker" layoutX="20" layoutY="160" />
 
-
         <!-- Button to Show Comparison -->
         <Button text="Show Comparison" layoutX="20" layoutY="200" onAction="#onShowComparisonClick" />
 
-        <Button text="Home" layoutX="150" layoutY="380" prefWidth="100"
+        <!-- Home Button -->
+        <Button text="Home" layoutX="20" layoutY="240" prefWidth="100"
                 style="-fx-background-color: #efcb68; -fx-background-radius: 0; -fx-border-color: #333333;"
                 onAction="#handleHome"/>
 
@@ -45,7 +46,8 @@
         <Label fx:id="optimalTotalCostLabel" layoutX="300" layoutY="380" text="Total Cost: " />
         <Label fx:id="customTotalCostLabel" layoutX="650" layoutY="380" text="Total Cost: " />
 
-
-
+        <!-- Move ListViews to align with PieCharts (directly below) -->
+        <ListView fx:id="optimalSaleLineItemListView" layoutX="300" layoutY="410" prefWidth="300" prefHeight="150" />
+        <ListView fx:id="customSaleLineItemListView" layoutX="650" layoutY="410" prefWidth="300" prefHeight="150" />
     </children>
 </AnchorPane>

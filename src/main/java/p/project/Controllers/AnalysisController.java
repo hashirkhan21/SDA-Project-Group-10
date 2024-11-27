@@ -1,5 +1,7 @@
 package p.project.Controllers;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,8 +12,7 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import p.project.DBHandling.MySQLConnection;
 
@@ -49,6 +50,12 @@ public class AnalysisController {
 
     @FXML
     private Label customCategoryCostLabel;
+
+    @FXML
+    private ListView<String> optimalSaleLineItemListView; // ListView to display SaleLineItems for optimal list
+
+    @FXML
+    private ListView<String> customSaleLineItemListView; // ListView to display SaleLineItems for custom list
 
     private int userID;
 
@@ -101,6 +108,7 @@ public class AnalysisController {
     }
 
     // Action for when the user clicks "Show Comparison"
+// Action for when the user clicks "Show Comparison"
     @FXML
     private void onShowComparisonClick() {
         String selectedOptimalList = optimalListComboBox.getValue();
@@ -109,6 +117,8 @@ public class AnalysisController {
         if (selectedOptimalList != null && selectedCustomList != null) {
             int optimalListID = Integer.parseInt(selectedOptimalList.split(" - ")[0]);
             int customListID = Integer.parseInt(selectedCustomList.split(" - ")[0]);
+
+            // Display data in PieCharts
             displayComparisonCharts(optimalListID, customListID);
         }
     }
@@ -119,9 +129,10 @@ public class AnalysisController {
         Map<String, Double> customData = getCategoryDataForList("CustomListSaleLineItem", customListID);
 
         // Display data in Pie Charts
-        showPieChart(optimalPieChart, optimalData, optimalTotalCostLabel, optimalCategoryCostLabel);
-        showPieChart(customPieChart, customData, customTotalCostLabel, customCategoryCostLabel);
+        showPieChart(optimalPieChart, optimalData, optimalTotalCostLabel, optimalCategoryCostLabel, optimalSaleLineItemListView, "OptimalList", optimalListID);
+        showPieChart(customPieChart, customData, customTotalCostLabel, customCategoryCostLabel, customSaleLineItemListView, "CustomList", customListID);
     }
+
 
     // Fetch total price per category for a given list ID
     private Map<String, Double> getCategoryDataForList(String tableName, int listID) {
@@ -146,7 +157,7 @@ public class AnalysisController {
     }
 
     // Helper function to show data in PieChart
-    private void showPieChart(PieChart pieChart, Map<String, Double> data, Label totalCostLabel, Label categoryCostLabel) {
+    private void showPieChart(PieChart pieChart, Map<String, Double> data, Label totalCostLabel, Label categoryCostLabel, ListView<String> saleLineItemListView, String listType, int listID) {
         pieChart.getData().clear();
         double totalCost = 0.0;
 
@@ -158,14 +169,51 @@ public class AnalysisController {
             PieChart.Data pieData = new PieChart.Data(category, value);
             pieChart.getData().add(pieData);
 
-            // Add event handler to display the category cost in the provided label when the pie slice is clicked
+            // Add event handler to display the category cost and SaleLineItems when the pie slice is clicked
             pieData.getNode().setOnMouseClicked(event -> {
                 categoryCostLabel.setText("Category Cost: " + category + " - $" + String.format("%.2f", value));
+                // Fetch and display SaleLineItems for this category and listID
+                displaySaleLineItems(category, saleLineItemListView, listType, listID);
             });
         }
 
         totalCostLabel.setText("Total Cost: $" + String.format("%.2f", totalCost));
     }
+
+    // Fetch and display SaleLineItems for the selected category
+    private void displaySaleLineItems(String category, ListView<String> saleLineItemListView, String listType, int listID) {
+        ObservableList<String> saleLineItems = FXCollections.observableArrayList();
+
+        String query;
+        if ("OptimalList".equals(listType)) {
+            // Query for OptimalListSaleLineItem
+            query = "SELECT i.itemName, o.quantity, i.price " +
+                    "FROM OptimalSaleLineItem o " +
+                    "JOIN Item i ON o.itemID = i.itemID " +
+                    "WHERE i.category = ? AND o.optimalListID = ?";
+        } else {
+            // Query for CustomListSaleLineItem
+            query = "SELECT i.itemName, c.quantity, i.price " +
+                    "FROM CustomListSaleLineItem c " +
+                    "JOIN Item i ON c.itemID = i.itemID " +
+                    "WHERE i.category = ? AND c.customListID = ?";
+        }
+
+        try (ResultSet rs = MySQLConnection.executePreparedQuery(query, category, listID)) {
+            while (rs.next()) {
+                String itemName = rs.getString("itemName");
+                int quantity = rs.getInt("quantity");
+                double price = rs.getDouble("price");
+                saleLineItems.add(itemName + " - Quantity: " + quantity + " - Price: $" + String.format("%.2f", price));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        saleLineItemListView.setItems(saleLineItems);
+    }
+
+
 
     @FXML
     private void handleHome(ActionEvent event) {
@@ -178,7 +226,7 @@ public class AnalysisController {
             Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
             // Set the new scene and display it
-            Scene scene = new Scene(root,500 ,500);
+            Scene scene = new Scene(root, 500, 500);
             currentStage.setScene(scene);
             currentStage.setTitle("Main Menu");
             currentStage.show();

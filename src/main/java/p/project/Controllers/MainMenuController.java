@@ -70,7 +70,7 @@ public class MainMenuController {
             Parent root = loader.load();
 
             // Load the new scene
-            Scene scene = new Scene(root);
+            Scene scene = new Scene(root,800,800);
             scene.getStylesheets().add(getClass().getResource("/p/project/style.css").toExternalForm());
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
@@ -92,7 +92,7 @@ public class MainMenuController {
 
             // Get the current stage from the event and set the new scene
             Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root, 1000, 600);
+            Scene scene = new Scene(root, 1000, 700);
             stage.setScene(scene);
             stage.setTitle("List Comparison Analysis");
             stage.show();
