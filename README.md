@@ -1,0 +1,1 @@
+This is my group's Software Design and Analysis semester project. We were tasked to make any desktop application using SDA concepts and my team chose to make a budget management, delivery system app which helps its users to efficiently do their groceries according to their budget.
