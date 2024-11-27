@@ -1,14 +1,20 @@
 package p.project.Controllers;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ListView;
 import p.project.Classes.*;
 import p.project.DBHandling.MySQLConnection;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MainController {
     private static MainController instance;
@@ -273,5 +279,64 @@ public class MainController {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public ObservableList<String> getListNames(String listType) {
+        ObservableList<String> list = FXCollections.observableArrayList();
+        String query;
+
+        if ("OptimalList".equals(listType)) {
+            query = "SELECT ID, date FROM OptimalList WHERE userID = ?";
+        } else if ("CustomList".equals(listType)) {
+            query = "SELECT customListID, 'N/A' as date FROM CustomList WHERE userID = ?";
+        } else {
+            throw new IllegalArgumentException("Unknown list type: " + listType);
+        }
+
+        try (ResultSet rs = MySQLConnection.executePreparedQuery(query, userID)) {
+            while (rs.next()) {
+                int id;
+                String date;
+
+                if ("OptimalList".equals(listType)) {
+                    id = rs.getInt("ID");
+                    date = rs.getString("date");
+                } else {
+                    id = rs.getInt("customListID");
+                    date = "N/A";
+                }
+
+                list.add(id + " - " + date);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public void displaySaleLineItems(String category, ListView<String> saleLineItemListView, String listType, int listID) {
+    }
+
+    public Map<String, Double> getCategoryDataForList(String tableName, int listID) {
+
+        Map<String, Double> categoryData = new HashMap<>();
+        String query = String.format(
+                "SELECT i.category, SUM(i.price * s.quantity) AS totalCost " +
+                        "FROM %s s " +
+                        "JOIN Item i ON s.itemID = i.itemID " +
+                        "WHERE s.%sID = ? " +
+                        "GROUP BY i.category", tableName, tableName.startsWith("Optimal") ? "optimalList" : "customList");
+
+        try (ResultSet rs = MySQLConnection.executePreparedQuery(query, listID)) {
+            while (rs.next()) {
+                String category = rs.getString("category");
+                double totalCost = rs.getDouble("totalCost");
+                categoryData.put(category, totalCost);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return categoryData;
+
     }
 }

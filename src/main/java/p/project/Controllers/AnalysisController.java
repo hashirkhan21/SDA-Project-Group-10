@@ -24,6 +24,7 @@ import java.util.Map;
 
 public class AnalysisController {
 
+    MainController mainController;
     @FXML
     private ComboBox<String> optimalListComboBox;
 
@@ -61,6 +62,7 @@ public class AnalysisController {
 
     public void initialize(int userID) {
         this.userID = userID;
+        mainController = MainController.getInstance();
         loadListData();
     }
 
@@ -71,40 +73,12 @@ public class AnalysisController {
 
         optimalListComboBox.setItems(optimalLists);
         customListComboBox.setItems(customLists);
+
     }
 
     // Fetch list names (date and ID) for the user from the DB
     private ObservableList<String> getListNames(String listType) {
-        ObservableList<String> list = FXCollections.observableArrayList();
-        String query;
-
-        if ("OptimalList".equals(listType)) {
-            query = "SELECT ID, date FROM OptimalList WHERE userID = ?";
-        } else if ("CustomList".equals(listType)) {
-            query = "SELECT customListID, 'N/A' as date FROM CustomList WHERE userID = ?";
-        } else {
-            throw new IllegalArgumentException("Unknown list type: " + listType);
-        }
-
-        try (ResultSet rs = MySQLConnection.executePreparedQuery(query, userID)) {
-            while (rs.next()) {
-                int id;
-                String date;
-
-                if ("OptimalList".equals(listType)) {
-                    id = rs.getInt("ID");
-                    date = rs.getString("date");
-                } else {
-                    id = rs.getInt("customListID");
-                    date = "N/A";
-                }
-
-                list.add(id + " - " + date);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return list;
+        return mainController.getListNames(listType);
     }
 
     // Action for when the user clicks "Show Comparison"
@@ -136,24 +110,7 @@ public class AnalysisController {
 
     // Fetch total price per category for a given list ID
     private Map<String, Double> getCategoryDataForList(String tableName, int listID) {
-        Map<String, Double> categoryData = new HashMap<>();
-        String query = String.format(
-                "SELECT i.category, SUM(i.price * s.quantity) AS totalCost " +
-                        "FROM %s s " +
-                        "JOIN Item i ON s.itemID = i.itemID " +
-                        "WHERE s.%sID = ? " +
-                        "GROUP BY i.category", tableName, tableName.startsWith("Optimal") ? "optimalList" : "customList");
-
-        try (ResultSet rs = MySQLConnection.executePreparedQuery(query, listID)) {
-            while (rs.next()) {
-                String category = rs.getString("category");
-                double totalCost = rs.getDouble("totalCost");
-                categoryData.put(category, totalCost);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return categoryData;
+       return mainController.getCategoryDataForList(tableName,listID);
     }
 
     // Helper function to show data in PieChart
@@ -212,7 +169,6 @@ public class AnalysisController {
 
         saleLineItemListView.setItems(saleLineItems);
     }
-
 
 
     @FXML
