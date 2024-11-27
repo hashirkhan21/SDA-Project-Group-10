@@ -89,26 +89,31 @@ public class CheckoutController {
         // Insert the order into the DB via MainController
         int userID = mainController.getUserID();
         int customListID = mainController.customListID;
-        double totalAmount = mainController.calculateTotalAmount(userID,customListID);
+        double totalAmount = mainController.calculateTotalAmount(userID, customListID);
 
         if (totalAmount == 0) {
             // Generate a random number between 1100 and 9900, in multiples of 100
             totalAmount = (int) (Math.random() * 90 + 11) * 100;
         }
-
-        try {
-            mainController.insertOrderIntoDB(userID, customListID, address, phoneNumber, paymentMethod, totalAmount);
-            showSuccess("Order confirmed. Status is pending until a rider picks it up.");
-
-            mainController.customListID = 0;
-            mainController.clearCart();
-        } catch (Exception e) {
-            e.printStackTrace();
-            showError("Failed to confirm the order. Please try again.");
-        }
-
-        goToMenu();
+        placeOrderConfirm(userID,customListID,address,phoneNumber,paymentMethod,totalAmount);
     }
+
+    public void placeOrderConfirm(int userID,int  customListID,String address,String phoneNumber,String paymentMethod,double totalAmount) throws IOException {
+
+            try {
+                mainController.insertOrderIntoDB(userID, customListID, address, phoneNumber, paymentMethod, totalAmount);
+                showSuccess("Order confirmed. Status is pending until a rider picks it up.");
+                mainController.customListID = 0;
+                mainController.clearCart();
+            } catch (Exception e) {
+                e.printStackTrace();
+                showError("Failed to confirm the order. Please try again.");
+            }
+
+            goToMenu();
+
+    }
+
 
     private void goToMenu() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/p/project/main_menu.fxml")); // Load the main menu FXML

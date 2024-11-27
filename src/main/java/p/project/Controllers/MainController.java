@@ -87,25 +87,9 @@ public class MainController {
     }
 
     public void insertOrderIntoDB(int userID, int customListID, String address, String phoneNumber, String paymentMethod, double totalAmount) {
-        try {
-            // Get the current time as a formatted string
-            LocalDateTime now = LocalDateTime.now();
-            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-            DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-            String currentDate = now.format(dateFormatter);
-            String currentTime = now.format(timeFormatter);
+        Order o = new Order();
 
-            // Insert the order into the database
-            MySQLConnection.executeUpdate(
-                    "INSERT INTO OrderTable (userID, customListID, amount, status, address, phoneNumber, date, time) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
-                    userID, customListID, totalAmount, "Pending", address, phoneNumber, currentDate, currentTime);
-
-            System.out.println("Order successfully inserted into the database.");
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.err.println("Failed to insert the order into the database.");
-        }
+        o. insertOrderIntoDB(userID,customListID,address,phoneNumber,paymentMethod,totalAmount);
     }
 
     public double calculateTotalAmount() {
@@ -252,4 +236,42 @@ public class MainController {
         return totalAmount;
     }
 
+    public List<Order> fetchPickedOrdersForRider(List<Order> orders) {
+        try {
+            String query = """
+                SELECT o.ID AS order_id, o.amount, o.status, o.address, o.phoneNumber, o.customListID
+                FROM RiderOrder ro
+                JOIN OrderTable o ON ro.orderID = o.ID
+                WHERE ro.riderID = ?
+                """;
+            ResultSet rs = MySQLConnection.executePreparedQuery(query, riderID);
+            while (rs.next()) {
+                orders.add(new Order(
+                        rs.getInt("order_id"),
+                        this.getUserID(),
+                        rs.getDouble("amount"),
+                        rs.getString("status"),
+                        rs.getString("address"),
+                        rs.getString("phoneNumber"),
+                        rs.getInt("customListID")
+                ));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return  orders;
+    }
+
+    public boolean validateOrderCode(int orderID, String orderCode) {
+        try {
+            String query = "SELECT COUNT(*) FROM OrderCodes WHERE orderID = ? AND orderCode = ?";
+            ResultSet rs = MySQLConnection.executePreparedQuery(query, orderID, orderCode);
+            if (rs.next() && rs.getInt(1) > 0) {
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

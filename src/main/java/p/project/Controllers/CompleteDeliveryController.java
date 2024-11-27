@@ -54,7 +54,7 @@ public class CompleteDeliveryController {
 
     private void loadPickedOrders() {
         try {
-            List<Order> pickedOrders = fetchPickedOrdersForRider(mainController.getRiderID());
+            List<Order> pickedOrders = fetchPickedOrdersForRider();
             pickedOrdersTable.getItems().clear();
             pickedOrdersTable.getItems().addAll(pickedOrders);
         } catch (Exception e) {
@@ -63,31 +63,10 @@ public class CompleteDeliveryController {
         }
     }
 
-    private List<Order> fetchPickedOrdersForRider(int riderID) {
+    private List<Order> fetchPickedOrdersForRider() {
         List<Order> orders = new ArrayList<>();
-        try {
-            String query = """
-                SELECT o.ID AS order_id, o.amount, o.status, o.address, o.phoneNumber, o.customListID
-                FROM RiderOrder ro
-                JOIN OrderTable o ON ro.orderID = o.ID
-                WHERE ro.riderID = ?
-                """;
-            ResultSet rs = MySQLConnection.executePreparedQuery(query, riderID);
-            while (rs.next()) {
-                orders.add(new Order(
-                        rs.getInt("order_id"),
-                        mainController.getUserID(),
-                        rs.getDouble("amount"),
-                        rs.getString("status"),
-                        rs.getString("address"),
-                        rs.getString("phoneNumber"),
-                        rs.getInt("customListID")
-                ));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return orders;
+        return mainController.fetchPickedOrdersForRider(orders);
+
     }
 
     @FXML
@@ -148,16 +127,7 @@ public class CompleteDeliveryController {
     }
 
     private boolean validateOrderCode(int orderID, String orderCode) {
-        try {
-            String query = "SELECT COUNT(*) FROM OrderCodes WHERE orderID = ? AND orderCode = ?";
-            ResultSet rs = MySQLConnection.executePreparedQuery(query, orderID, orderCode);
-            if (rs.next() && rs.getInt(1) > 0) {
-                return true;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return false;
+        return mainController.validateOrderCode(orderID,orderCode);
     }
 
     @FXML

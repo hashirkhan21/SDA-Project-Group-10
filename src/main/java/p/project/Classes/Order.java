@@ -3,6 +3,8 @@ package p.project.Classes;
 import p.project.DBHandling.MySQLConnection;
 
 import java.sql.ResultSet;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -144,5 +146,29 @@ public class Order {
             e.printStackTrace();
             throw new RuntimeException("Failed to mark order as picked.");
         }
+    }
+
+    public void insertOrderIntoDB(int userID, int customListID, String address, String phoneNumber, String paymentMethod, double totalAmount) {
+
+        try {
+            // Get the current time as a formatted string
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+            String currentDate = now.format(dateFormatter);
+            String currentTime = now.format(timeFormatter);
+
+            // Insert the order into the database
+            MySQLConnection.executeUpdate(
+                    "INSERT INTO OrderTable (userID, customListID, amount, status, address, phoneNumber, date, time) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+                    userID, customListID, totalAmount, "Pending", address, phoneNumber, currentDate, currentTime);
+
+            System.out.println("Order successfully inserted into the database.");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println("Failed to insert the order into the database.");
+        }
+
     }
 }
