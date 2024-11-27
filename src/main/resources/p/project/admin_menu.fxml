@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="p.project.Controllers.AdminMenuController" prefHeight="400.0" prefWidth="600.0">
+    <children>
+        <VBox alignment="CENTER" spacing="20.0" layoutX="150.0" layoutY="100.0" prefWidth="300.0">
+            <!-- Title Label -->
+            <Label text="Admin Menu" style="-fx-font-size: 24; -fx-font-weight: bold;" />
+
+            <!-- Buttons Section -->
+            <Button fx:id="approveShopsButton" text="Approve Shops" onAction="#goToApproveShops" prefWidth="200.0" />
+            <Button text="Handle Feedback" onAction="#goToHandleFeedback" style="
+                -fx-background-color: #2196F3; /* Blue for feedback */
+                -fx-background-radius: 20px;
+                -fx-text-fill: white;
+                -fx-padding: 10px 20px;
+                -fx-font-size: 14px;
+                -fx-font-family: 'Arial', sans-serif;
+                -fx-cursor: hand;
+                -fx-border-color: #1976D2; /* Darker blue border */
+                -fx-border-radius: 20px;
+            "/>
+
+
+            <Button fx:id="signOutButton" text="Sign Out" onAction="#signOut" prefWidth="200.0" />
+
+        </VBox>
+    </children>
+</AnchorPane>

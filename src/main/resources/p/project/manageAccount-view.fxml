@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="p.project.Controllers.manageAccountController"
+            stylesheets="@style.css">
+
+    <!-- Back Button -->
+    <Button fx:id="backButton" text="Go Back" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0"
+            onAction="#handleBack"
+            style="-fx-background-color: #4caf50; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold;
+                   -fx-background-radius: 20px; -fx-padding: 10px 20px; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 5, 0.0, 0, 2);" />
+
+    <VBox alignment="CENTER" spacing="30" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0"
+          AnchorPane.topAnchor="20.0" AnchorPane.bottomAnchor="80.0">
+
+        <Label text="Manage Account"
+               style="-fx-font-family: 'Segoe UI'; -fx-font-size: 32px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;
+                      -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 3, 0.0, 0, 2);" />
+
+        <Label fx:id="userInfoLabel" wrapText="true"
+               style="-fx-font-family: 'Arial'; -fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;
+                      -fx-background-color: #ffffff; -fx-padding: 20px; -fx-border-color: #dddddd; -fx-border-radius: 10px;
+                      -fx-background-radius: 10px; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 4, 0.0, 0, 1);" />
+
+        <VBox spacing="15" alignment="CENTER">
+            <Button fx:id="editProfileButton" text="Edit Profile"
+                    prefWidth="300.0" prefHeight="50.0" onAction="#handleEditProfile"
+                    style="-fx-background-color: #007bff; -fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold;
+                           -fx-background-radius: 25px; -fx-padding: 10px; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 6, 0.0, 0, 3);" />
+
+            <Button fx:id="changePasswordButton" text="Change Password"
+                    prefWidth="300.0" prefHeight="50.0" onAction="#handleChangePassword"
+                    style="-fx-background-color: #17a2b8; -fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold;
+                           -fx-background-radius: 25px; -fx-padding: 10px; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 6, 0.0, 0, 3);" />
+
+            <Button fx:id="updatePreferencesButton" text="Update Preferences"
+                    prefWidth="300.0" prefHeight="50.0" onAction="#handleUpdatePreferences"
+                    style="-fx-background-color: #ffc107; -fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold;
+                           -fx-background-radius: 25px; -fx-padding: 10px; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 6, 0.0, 0, 3);" />
+
+            <Button fx:id="deleteAccountButton" text="Delete Account"
+                    prefWidth="300.0" prefHeight="50.0" onAction="#handleDeleteAccount"
+                    style="-fx-background-color: #dc3545; -fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold;
+                           -fx-background-radius: 25px; -fx-padding: 10px; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 6, 0.0, 0, 3);" />
+        </VBox>
+    </VBox>
+
+    <!-- Feedback Button -->
+    <Button fx:id="feedbackButton" text="Submit Feedback" onAction="#handleFeedback"
+            AnchorPane.rightAnchor="20.0" AnchorPane.bottomAnchor="30.0"
+            style="-fx-background-color: #28a745; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold;
+                   -fx-background-radius: 20px; -fx-padding: 10px 20px; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 6, 0.0, 0, 3);" />
+</AnchorPane>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="p.project.Controllers.GenerateOptimalListController"
+            prefWidth="650" prefHeight="450" style="-fx-background-color: #f5f5f5;">
+    <!-- Title -->
+    <Label text="Generate Optimal List" layoutX="200" layoutY="20"
+           style="-fx-font-size: 18px; -fx-text-fill: #333333;"/>
+
+    <!-- Budget Input -->
+    <Label text="Budget:" layoutX="30" layoutY="80" style="-fx-text-fill: #333333; -fx-font-size: 14px;"/>
+    <TextField fx:id="budgetField" layoutX="150" layoutY="75" prefWidth="300"
+               style="-fx-background-radius: 0; -fx-background-color: #D3D3D3; -fx-border-color: #333333;"/>
+
+    <!-- Family Size Input -->
+    <Label text="Family Size:" layoutX="30" layoutY="130" style="-fx-text-fill: #333333; -fx-font-size: 14px;"/>
+    <TextField fx:id="familySizeField" layoutX="150" layoutY="125" prefWidth="300"
+               style="-fx-background-radius: 0; -fx-background-color: #D3D3D3; -fx-border-color: #333333;"/>
+
+    <!-- Location Input -->
+    <Label text="Location:" layoutX="30" layoutY="180" style="-fx-text-fill: #333333; -fx-font-size: 14px;"/>
+    <TextField fx:id="locationField" layoutX="150" layoutY="175" prefWidth="300"
+               style="-fx-background-radius: 0; -fx-background-color: #D3D3D3; -fx-border-color: #333333;"/>
+
+    <!-- Percentages Inputs -->
+    <Label text="Food Essentials (%):" layoutX="30" layoutY="230" style="-fx-text-fill: #333333; -fx-font-size: 14px;"/>
+    <TextField fx:id="foodEssentialsField" layoutX="150" layoutY="225" prefWidth="50"
+               style="-fx-background-radius: 0; -fx-background-color: #D3D3D3; -fx-border-color: #333333;"/>
+
+    <Label text="Utilities (%):" layoutX="30" layoutY="280" style="-fx-text-fill: #333333; -fx-font-size: 14px;"/>
+    <TextField fx:id="utilitiesField" layoutX="150" layoutY="275" prefWidth="50"
+               style="-fx-background-radius: 0; -fx-background-color: #D3D3D3; -fx-border-color: #333333;"/>
+
+    <Label text="Cosmetics (%):" layoutX="30" layoutY="330" style="-fx-text-fill: #333333; -fx-font-size: 14px;"/>
+    <TextField fx:id="cosmeticsField" layoutX="150" layoutY="325" prefWidth="50"
+               style="-fx-background-radius: 0; -fx-background-color: #D3D3D3; -fx-border-color: #333333;"/>
+
+    <!-- Buttons -->
+    <Button text="Submit" layoutX="30" layoutY="380" prefWidth="100"
+            style="-fx-background-color: #efcb68; -fx-background-radius: 0; -fx-border-color: #333333;"
+            onAction="#handleSubmit"/>
+    <Button text="Home" layoutX="150" layoutY="380" prefWidth="100"
+            style="-fx-background-color: #efcb68; -fx-background-radius: 0; -fx-border-color: #333333;"
+            onAction="#handleHome"/>
+</AnchorPane>

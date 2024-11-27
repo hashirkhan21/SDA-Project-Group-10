@@ -1,0 +1,169 @@
+/* Variables */
+* {
+    -fx-primary: #4caf50; /* Green */
+    -fx-primary-light: #c8e6c9; /* Light green */
+    -fx-primary-dark: #388e3c; /* Dark green */
+    -fx-grey-light: #f8f9fa; /* Light white */
+    -fx-grey: #dddddd; /* Light grey */
+    -fx-grey-dark: #50514f; /* Dark grey */
+    -fx-black: #000000; /* Black */
+    -fx-white: #ffffff; /* White */
+}
+
+/* Root Background */
+.root {
+    -fx-background-color: -fx-grey-light;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+    -fx-font-size: 14px;
+}
+
+/* ComboBox Styling */
+.combo-box {
+    -fx-background-color: -fx-white;
+    -fx-border-color: -fx-grey;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-padding: 8px;
+    -fx-font-size: 14px;
+}
+
+.combo-box:hover {
+    -fx-border-color: -fx-primary-light;
+}
+
+.combo-box:focused {
+    -fx-border-color: -fx-primary;
+    -fx-border-width: 2px;
+}
+
+.combo-box .list-cell {
+    -fx-padding: 8px 12px;
+}
+
+.combo-box-popup .list-view {
+    -fx-background-color: -fx-white;
+    -fx-border-color: -fx-grey;
+    -fx-border-radius: 8px;
+}
+
+/* Buttons */
+.button {
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: -fx-white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+    -fx-padding: 10px 20px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 4, 0, 0, 2);
+}
+
+.button:hover {
+    -fx-background-color: -fx-primary-dark;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 6, 0, 0, 3);
+}
+
+.button:pressed {
+    -fx-background-color: derive(-fx-primary-dark, -10%);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 2, 0, 0, 1);
+}
+
+/* Labels */
+.label {
+    -fx-text-fill: -fx-black;
+    -fx-font-size: 14px;
+}
+
+.label.header {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-padding: 20px 0 10px 0;
+}
+
+.label.subheader {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-padding: 10px 0 5px 0;
+}
+
+/* Text Fields */
+.text-field {
+    -fx-background-color: -fx-white;
+    -fx-border-color: -fx-grey;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-padding: 8px 12px;
+    -fx-font-size: 14px;
+}
+
+.text-field:focused {
+    -fx-border-color: -fx-primary;
+    -fx-border-width: 2px;
+}
+
+.text-field:hover {
+    -fx-border-color: -fx-primary-light;
+}
+
+/* ScrollPane and VBox */
+.scroll-pane {
+    -fx-background: transparent;
+    -fx-border-color: -fx-grey;
+    -fx-border-radius: 8px;
+    -fx-padding: 10px;
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-pref-width: 12px;
+}
+
+.scroll-bar:vertical .thumb {
+    -fx-background-color: -fx-grey;
+    -fx-background-radius: 6px;
+}
+
+.scroll-bar:vertical .thumb:hover {
+    -fx-background-color: derive(-fx-grey-dark, 50%);
+}
+
+/* VBox Containers */
+.vbox {
+    -fx-background-color: -fx-grey-light;
+    -fx-padding: 20px;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-border-color: -fx-grey;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 4, 0, 0, 2);
+}
+
+/* Item List */
+.item-list {
+    -fx-background-color: -fx-grey-light;
+    -fx-border-color: -fx-grey;
+    -fx-border-radius: 8px;
+    -fx-padding: 10px;
+    -fx-font-size: 14px;
+    -fx-text-fill: -fx-black;
+}
+
+/* Proceed to Overview Button */
+.button.proceed {
+    -fx-background-color: -fx-primary;
+    -fx-border-radius: 20px;
+    -fx-text-fill: -fx-white;
+    -fx-font-size: 16px;
+    -fx-padding: 12px 24px;
+    -fx-font-weight: bold;
+    -fx-border-color: -fx-primary-dark;
+}
+
+/* Animations */
+.button {
+    -fx-transition: all 0.2s ease-in-out;
+}

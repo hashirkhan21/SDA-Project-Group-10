@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="p.project.Controllers.OptimalListViewController">
+    <Text text="OptimalListView" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+    <TableView fx:id="saleLineItemTable" prefHeight="400" prefWidth="600">
+        <columns>
+            <TableColumn fx:id="itemNameColumn" text="Item Name" />
+            <TableColumn fx:id="priceColumn" text="Price" />
+            <TableColumn fx:id="categoryColumn" text="Category" />
+            <TableColumn fx:id="quantityColumn" text="Quantity" />
+            <TableColumn fx:id="shopIDColumn" text="Shop ID" />
+            <TableColumn fx:id="actionColumn" text="Actions" />
+        </columns>
+    </TableView>
+    <Button text="Home" layoutX="150" layoutY="380" prefWidth="100"
+            style="-fx-background-color: #efcb68; -fx-background-radius: 0; -fx-border-color: #333333;"
+            onAction="#handleHome"/>
+</VBox>
+

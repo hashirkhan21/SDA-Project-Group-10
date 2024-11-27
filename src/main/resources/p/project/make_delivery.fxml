@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.geometry.Insets?>
+
+<VBox alignment="CENTER" prefHeight="600" prefWidth="600" spacing="20" xmlns:fx="http://javafx.com/fxml/1" fx:controller="p.project.Controllers.MakeDeliveryController" style="
+    -fx-background-color: #f8f9fa;
+    -fx-border-color: #dddddd;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-padding: 20px;
+    -fx-font-family: 'Arial', sans-serif;
+    -fx-font-size: 14px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 10, 0, 0, 2);
+    -fx-text-fill: #000000;
+">
+    <!-- Label -->
+    <Label text="Order Details" style="
+        -fx-background-color: transparent;
+        -fx-font-size: 18px;
+        -fx-font-weight: bold;
+        -fx-text-fill: #333333;
+        -fx-padding: 10px;
+    "/>
+
+    <!-- TableView -->
+    <ScrollPane fitToWidth="true" styleClass="scroll-pane" style="
+        -fx-background-color: transparent;
+        -fx-border-color: #dddddd;
+        -fx-border-radius: 8px;
+        -fx-background-radius: 8px;
+        -fx-padding: 10px;
+    ">
+        <VBox>
+            <TableView fx:id="orderTable" prefWidth="550" style="
+                -fx-border-color: #dddddd;
+                -fx-border-radius: 8px;
+                -fx-background-radius: 8px;
+                -fx-background-color: #ffffff;
+                -fx-padding: 10px;
+            ">
+                <columns>
+                    <TableColumn text="Order ID" fx:id="orderIDColumn" />
+                    <TableColumn text="User ID" fx:id="userIDColumn" />
+                    <TableColumn text="Amount" fx:id="amountColumn" />
+                    <TableColumn text="Status" fx:id="statusColumn" />
+                    <TableColumn fx:id="addressColumn" text="Address" />
+                    <TableColumn fx:id="phoneNumberColumn" text="Phone Number" />
+
+                </columns>
+            </TableView>
+        </VBox>
+    </ScrollPane>
+
+    <Button text="Back" onAction="#goBack" style="
+    -fx-background-color: #f44336;
+    -fx-text-fill: white;
+    -fx-background-radius: 10px;
+    -fx-padding: 10px 20px;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+    "/>
+
+    <!-- Buttons -->
+    <VBox spacing="10" alignment="CENTER" style="
+        -fx-padding: 20px;
+    ">
+        <Button text="Show Details" onAction="#showOrderDetails" style="
+            -fx-background-color: #4caf50;
+            -fx-text-fill: white;
+            -fx-background-radius: 20px;
+            -fx-border-color: #3e8e41;
+            -fx-border-radius: 20px;
+            -fx-padding: 10px 20px;
+            -fx-font-size: 14px;
+            -fx-cursor: hand;
+        "/>
+        <Button text="Make Order" onAction="#makeOrder" style="
+            -fx-background-color: #007bff;
+            -fx-text-fill: white;
+            -fx-background-radius: 20px;
+            -fx-border-color: #0056b3;
+            -fx-border-radius: 20px;
+            -fx-padding: 10px 20px;
+            -fx-font-size: 14px;
+            -fx-cursor: hand;
+        "/>
+    </VBox>
+</VBox>

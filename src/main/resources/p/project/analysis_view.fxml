@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.DatePicker?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="p.project.Controllers.AnalysisController">
+    <children>
+        <!-- ComboBox for Optimal List Selection -->
+        <Label text="Select Optimal List" layoutX="20" layoutY="20" />
+        <ComboBox fx:id="optimalListComboBox" layoutX="20" layoutY="40" />
+
+        <!-- ComboBox for Custom List Selection -->
+        <Label text="Select Custom List" layoutX="20" layoutY="80" />
+        <ComboBox fx:id="customListComboBox" layoutX="20" layoutY="100" />
+
+        <!-- Date Picker for filtering the lists -->
+        <Label text="Select Date (Optional)" layoutX="20" layoutY="140" />
+        <DatePicker fx:id="dateFilterDatePicker" layoutX="20" layoutY="160" />
+
+
+        <!-- Button to Show Comparison -->
+        <Button text="Show Comparison" layoutX="20" layoutY="200" onAction="#onShowComparisonClick" />
+
+        <Button text="Home" layoutX="150" layoutY="380" prefWidth="100"
+                style="-fx-background-color: #efcb68; -fx-background-radius: 0; -fx-border-color: #333333;"
+                onAction="#handleHome"/>
+
+        <!-- PieChart for Optimal List -->
+        <Label text="Optimal List" layoutX="300" layoutY="20" />
+        <PieChart fx:id="optimalPieChart" layoutX="300" layoutY="40" prefWidth="300" prefHeight="300" />
+        <!-- Label for Optimal List Category Cost -->
+        <Label fx:id="optimalCategoryCostLabel" layoutX="300" layoutY="350" text="Category Cost: " />
+
+        <!-- PieChart for Custom List -->
+        <Label text="Custom List" layoutX="650" layoutY="20" />
+        <PieChart fx:id="customPieChart" layoutX="650" layoutY="40" prefWidth="300" prefHeight="300" />
+        <!-- Label for Custom List Category Cost -->
+        <Label fx:id="customCategoryCostLabel" layoutX="650" layoutY="350" text="Category Cost: " />
+
+        <!-- Total Cost Labels -->
+        <Label fx:id="optimalTotalCostLabel" layoutX="300" layoutY="380" text="Total Cost: " />
+        <Label fx:id="customTotalCostLabel" layoutX="650" layoutY="380" text="Total Cost: " />
+
+
+
+    </children>
+</AnchorPane>

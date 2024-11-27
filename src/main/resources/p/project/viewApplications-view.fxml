@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="p.project.Controllers.viewApplicationsController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+
+    <HBox alignment="CENTER_LEFT">
+        <Button fx:id="backButton" text="← Back" onAction="#onBackButtonClick"
+                style="-fx-background-color: #ffa500; -fx-text-fill: white; -fx-font-weight: bold;"/>
+    </HBox>
+
+    <Label text="Shop Applications" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+
+    <ComboBox fx:id="applicationsComboBox" prefWidth="300.0" promptText="Select an application"/>
+
+    <VBox fx:id="shopDetailsBox" spacing="10.0" alignment="CENTER_LEFT" style="-fx-border-color: #e0e0e0; -fx-border-radius: 5; -fx-padding: 10;">
+        <Label fx:id="shopNameLabel" text="Shop Name: "/>
+        <Label fx:id="shopLocationLabel" text="Location: "/>
+    </VBox>
+
+    <HBox spacing="20.0" alignment="CENTER">
+        <Button fx:id="approveButton" text="Approve"
+                style="-fx-background-color: #0088ff; -fx-text-fill: white;"
+                onAction="#onApproveButtonClick"/>
+        <Button fx:id="denyButton" text="Deny"
+                style="-fx-background-color: #ff4444; -fx-text-fill: white;"
+                onAction="#onDenyButtonClick"/>
+    </HBox>
+</VBox>

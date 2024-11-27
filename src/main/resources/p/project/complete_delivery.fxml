@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="10" alignment="CENTER" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="p.project.Controllers.CompleteDeliveryController">
+    <Label text="Complete Delivery" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+
+    <!-- Table for picked up orders -->
+    <TableView fx:id="pickedOrdersTable" prefHeight="300" prefWidth="600">
+        <columns>
+            <TableColumn text="Order ID" fx:id="orderIDColumn" />
+            <TableColumn text="Amount" fx:id="amountColumn" />
+            <TableColumn text="Status" fx:id="statusColumn" />
+            <TableColumn text="Address" fx:id="addressColumn" />
+            <TableColumn text="Phone Number" fx:id="phoneNumberColumn" />
+        </columns>
+    </TableView>
+
+    <!-- Button to view custom list details -->
+    <Button text="View Custom List Details" onAction="#viewCustomListDetails" style="
+        -fx-background-color: #2196f3;
+        -fx-text-fill: white;
+        -fx-background-radius: 10px;
+        -fx-padding: 10px 20px;
+        -fx-font-size: 14px;" />
+
+    <!-- Button to complete the delivery -->
+    <Button text="Complete Delivery" onAction="#completeDelivery" style="
+        -fx-background-color: #4caf50;
+        -fx-text-fill: white;
+        -fx-background-radius: 10px;
+        -fx-padding: 10px 20px;
+        -fx-font-size: 14px;" />
+
+    <!-- Back button -->
+    <Button text="Back to Main Menu" onAction="#goBackToMainMenu" style="
+        -fx-background-color: #f44336;
+        -fx-text-fill: white;
+        -fx-background-radius: 10px;
+        -fx-padding: 10px 20px;
+        -fx-font-size: 14px;" />
+</VBox>
+
+

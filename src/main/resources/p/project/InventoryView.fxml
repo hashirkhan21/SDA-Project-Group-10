@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="p.project.Controllers.InventoryController" stylesheets="@style.css">
+    <top>
+        <HBox alignment="CENTER" spacing="20" styleClass="header">
+            <Label text="Manage Inventory" styleClass="header-label" />
+            <Button text="Add Product" styleClass="add-button" onAction="#onAddProduct" />
+            <Button fx:id="backButton" text="Back" onAction="#handleBack"
+                    style="-fx-background-color: #4caf50; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;"/>
+        </HBox>
+
+    </top>
+    <center>
+        <TableView fx:id="inventoryTable" styleClass="table">
+            <columns>
+                <TableColumn text="Item Name" fx:id="itemNameColumn" />
+                <TableColumn text="Price" fx:id="priceColumn" />
+                <TableColumn text="Category" fx:id="categoryColumn" />
+                <TableColumn text="Stock Level" fx:id="stockLevelColumn" />
+                <TableColumn text="Actions" fx:id="actionsColumn" />
+            </columns>
+        </TableView>
+    </center>
+</BorderPane>
